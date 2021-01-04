@@ -48,7 +48,11 @@ class ViewController: UIViewController {
     
     func onButtonClicked(_ sender : UIButton){
         
-        
+        let mainStory = UIStoryboard(name: "Main", bundle: nil);
+        let introController = mainStory.instantiateViewController(withIdentifier: "CardViewController") as! CardViewController
+        introController.modalPresentationStyle = .fullScreen
+        introController.currentSection = sender.tag;
+        self.present(introController , animated : true );
     }
 
 
