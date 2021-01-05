@@ -60,7 +60,7 @@ class CardViewController: UIViewController {
         m_btnList.append(btn3);
         
         //2- Read text file with parsing tag
-        ReadWords();
+        ReadWords(filePath : "\(currentSection)text");
         
         //3- get next word
         getNextQuestion();
@@ -83,13 +83,13 @@ class CardViewController: UIViewController {
     }
     func setButtonBorder (_ btn : UIButton){
         btn.layer.cornerRadius = 5;
-        btn.layer.borderWidth = 2;
+        btn.layer.borderWidth = 3;
         btn.layer.borderColor = blueBorderColor.cgColor;
         
     }
     
-    func ReadWords(){
-        if let path = Bundle.main.path(forResource: "\(currentSection)text", ofType: "txt") {
+    func ReadWords(filePath : String ){
+        if let path = Bundle.main.path(forResource: filePath , ofType: "txt") {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
                 let myStrings = data.components(separatedBy: .newlines)
@@ -149,40 +149,15 @@ class CardViewController: UIViewController {
          m_lasNo.insert(i);
         //print("position", "m_lasNo>>>\(m_lasNo)") ;
         m_lasNo.remove(11);
-//        if(m_lasNo.count == 10){
-//            m_lasNo = Set([0,1,2,3,4,5,6,7,8,9,10]);
-//        }
-         //print("position", "m_lasNo>>>\(m_lasNo)") ;
-
         return true;
-//        do {
-//            print("position", "m_lasNo>>>\(m_lasNo.count)") ;
-//           // print("position", "m_lasNo>>>\(m_lasNo)") ;
-//            if( m_lasNo.count-1  >= i){
-//                if(!m_lasNo.contains(i)){
-//                    if( m_lasNo.count > 11){
-//                        //m_lasNo.remove(at: 10);
-//                        m_lasNo.remove(at: m_lasNo.firstIndex(of: 10)!);
-//                    }
-//                    //m_lasNo.insert(i, at: 0);
-//
-//
-//                    return true;
-//            }else {
-//                return false;
-//            }
-//            }
-//        }catch let error {
-//            print(error.localizedDescription)
-//        }
-//          return false;
+
     }
     
     func getNextQuestion(){
           setButtonBorder(btn1);
           setButtonBorder(btn2);
-         setButtonBorder(btn3);
-        m_QNO = 0;
+          setButtonBorder(btn3);
+           m_QNO = 0;
         
         //1- sleep for 300 millisecond
         
@@ -246,9 +221,6 @@ class CardViewController: UIViewController {
         }
        
     }
-    
-    
-    
     
     @IBAction func onButtonsClicked(_ sender: UIButton) {
         if (sender.tag == 1) {
