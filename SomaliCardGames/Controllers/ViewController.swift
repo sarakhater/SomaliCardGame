@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     func setButtonBorder (_ btn : UIButton){
         btn.layer.cornerRadius = 5;
         btn.layer.borderWidth = 2;
+        btn.layer.masksToBounds = true;
         btn.layer.borderColor = blueBorderColor.cgColor;
               
     }

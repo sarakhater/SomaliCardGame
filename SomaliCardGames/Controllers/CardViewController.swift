@@ -37,6 +37,7 @@ class CardViewController: UIViewController {
     
     var player: AVAudioPlayer?
     let blueBorderColor = UIColor(red: 27/255, green: 156/255, blue: 244/255, alpha: 1.0);
+    //let blackBorderColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0);
     let greenBorderColor = UIColor(red: 73/255, green: 255/255, blue: 81/255, alpha: 1.0);
     let redBorderColor = UIColor(red: 254/255, green: 1/255, blue: 56/255, alpha: 1.0);
     
@@ -83,7 +84,8 @@ class CardViewController: UIViewController {
     }
     func setButtonBorder (_ btn : UIButton){
         btn.layer.cornerRadius = 5;
-        btn.layer.borderWidth = 3;
+        btn.layer.borderWidth = 2;
+        btn.layer.masksToBounds = true;
         btn.layer.borderColor = blueBorderColor.cgColor;
         
     }
